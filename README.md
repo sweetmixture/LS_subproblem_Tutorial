@@ -2,10 +2,12 @@
 
 A python code to generate randomised atom configuration of binary materials (e.g., MgO, Al2O3 ... ) output will be written in standard 'xyz' format.
 
-Way how to run the code is simply,
+## how to run the code?
 
-$ python /path/to/(MAIN_RACG.py) 
-
+use the following command
+```bash
+python /path/to/(MAIN_RACG.py) 
+```
 Beware that the directory where "MAIN_RACG.py" is going to be run must include input file "RACG.in"
 
 
@@ -14,8 +16,7 @@ Beware that the directory where "MAIN_RACG.py" is going to be run must include i
 Example "RACG.in" for (Bi2O3)n (n=8) randomised nanocluster generator
 (lines start with '#' are comments)
 
-line#	Contents
-
+```bash
   1	#################################################
   2	# GENERAL INFO
   3	#################################################
@@ -45,6 +46,7 @@ line#	Contents
  27	
  28	
  29	# Dummy Comment
+```
 
  - Esential arguments 
 
