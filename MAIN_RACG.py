@@ -415,7 +415,7 @@ class RACG(atom):
 
 	def print_xyz(self):			
 
-		with open("RACG_out.xyz","w") as f:
+		with open("racg_out.xyz","w") as f:
 		
 			self.energy_update()
 			self.force_update()
