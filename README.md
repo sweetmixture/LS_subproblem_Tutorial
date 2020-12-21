@@ -48,17 +48,27 @@ Example "RACG.in" for (Bi2O3)n (n=8) randomised nanocluster generator
  29	# Dummy Comment
 ```
 
- - Esential arguments 
+## Esential arguments 
 
- 1. BOX_SIZE: X Y Z          : A size of container or a box (x/y/z) where atoms randomly go in (lengths are in Angstrom unit)
+ 1. BOX_SIZE: X Y Z
+ 
+ A size of container or a box (x/y/z) where atoms randomly go in (lengths are in Angstrom unit)
 
- 2. BASE_ELEMENT: A B        : Species A and B, (only supports binary system in this version but feel free to edit the source code).
+ 2. BASE_ELEMENT: A B
 
- 3. UNIT_STOCHIO: a b        : Stochiometry of a building unit, e.g., for the case of (Bi2O3)n, a = 2 and b = 3.
+ Species A and B, (only supports binary system in this version but feel free to edit the source code).
 
- 4. ATOM_CHARGE:  qa qb      : User can feed formal charges of atoms in a building unit (in the sample above, Bi = +3 and O = -2, used). 
+ 3. UNIT_STOCHIO: a b
 
- 5. UNIT_SIZE:	n            : Size of an atom configuration or cluster, e.g., for (Bi2O3)8, n = 8.
+ Stochiometry of a building unit, e.g., for the case of (Bi2O3)n, a = 2 and b = 3.
+
+ 4. ATOM_CHARGE: qa qb
+
+ User can feed formal charges of atoms in a building unit (in the sample above, Bi = +3 and O = -2, used). 
+
+ 5. UNIT_SIZE: n
+
+ Size of an atom configuration or cluster, e.g., for (Bi2O3)8, n = 8.
 
  - Optional arguements
 
@@ -85,13 +95,21 @@ Example "RACG.in" for (Bi2O3)n (n=8) randomised nanocluster generator
     use the radomised configurations for a post-process with high level of theory. 
     (i.e., if the interatomic distances of atoms in the random configuration are too far each other, the geometry optimistion step in the post-process will take a bit of hours)
     
-    (1) BM_A(eV):               : Born-Mayer 'A' parameter (default value with 3000).
+    (1) BM_A(eV):
+
+    Born-Mayer 'A' parameter (default value with 3000).
  
-    (2) BM_RHO(/Angs):          : Born-Mayer 'Rho' parameter (default value with 0.30).
+    (2) BM_RHO(/Angs):
 
-    (3) LJ_(Angs^6):            : Attractive term in Lennard-Jones (default value with 36, if you put negative sign ... the interaction will turns intp repulsive).
+    Born-Mayer 'Rho' parameter (default value with 0.30).
 
-    (4) GNORM_TOL(eV/Angs):     : Gnorm tolerance for terminating a pre-geometric-optimisation process (default value with 0.035).
+    (3) LJ_(Angs^6):
+
+    Attractive term in Lennard-Jones (default value with 36, if you put negative sign ... the interaction will turns intp repulsive).
+
+    (4) GNORM_TOL(eV/Angs):
+
+    Gnorm tolerance for terminating a pre-geometric-optimisation process (default value with 0.035).
 
  * Born-Mayer potential is used between cation and anion, the parameters (BM_A & BM_RHO) are used to describe short-range repulsive interactions 
    to circumvent collision of atoms during pre-geometric-optimisation (e.g., anion - cation collision by attractive coulomb interaction).
