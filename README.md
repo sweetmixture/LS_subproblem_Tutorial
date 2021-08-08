@@ -48,7 +48,7 @@ Example "RACG.in" for (Bi2O3)n (n=8) randomised nanocluster generator
  29	# Dummy Comment
 ```
 
-## Esential arguments 
+## Essential Arguments 
 
  1. BOX_SIZE: X Y Z
  
