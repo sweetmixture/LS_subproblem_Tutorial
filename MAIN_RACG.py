@@ -167,7 +167,9 @@ class RACG(atom):
 
 		self.atoms = []			# FOR RECORDING
 		noa = 0				# Number of atoms
-		random.seed(time.time())	# Random seed 
+		#random.seed(time.time())	# Random seed 
+
+		random.seed(14)	# Random seed 
 
 		ret = True			# Initialise retur 'True'
 
@@ -330,29 +332,84 @@ class RACG(atom):
 		for i in range(len(self.atoms)):
 			tot_norm_sq += (self.atoms[i].f[0]*self.atoms[i].f[0] + self.atoms[i].f[1]*self.atoms[i].f[1] +self.atoms[i].f[2]*self.atoms[i].f[2])
 		
+
+	########################################################################################################################################################
 		'''
 			SUB-PROBLEM SOLVER MAIN
 		'''
+
+		'''
+			Please, using the template below, finish up the LS-subproblem Solver !!!
+
+			! Ingredients.
+
+			* self.atoms[i].xyz : contains (x,y,z) coordinate of the atom
+
+				e.g., 'y' coordinate of 5th atom is :
+	
+				self.atom[4].xyz[1]
+
+
+
+			* self.atom[i].f    : contains force acting on the atom
+
+				e.g., force acting on 4th atom toward 'z' direction is :
+
+				self.atom[3].f[2]
+
+
+
+			* self.energy_update() : is a function that returns energy of the current atom configuration
+
+				e.g., Save the energy of current configuration to a variable 'cur_energy'
+
+				cur_energy = self.energy_update()
+
+
+			* predefine variables (already calculated above)
+	
+				original_energy : energy of current configuration
+
+				tot_norm_sq     : |grad f(x)|^2			
+
+				t(alpha), beta         : which are set above - see line 316 - 'alpha' in the slide is replaced with 't'
+
+		'''
+
+
+
+
 		for i in range(self.ls_max_trial):
 
 			for j in range(len(self.atoms)):						# MOVE ATOMS TOWARD WHERE FORCE IS IN ACTION
-				self.atoms[j].xyz[0] = self.atoms[j].xyz[0] + t*self.atoms[j].f[0]	#
-				self.atoms[j].xyz[1] = self.atoms[j].xyz[1] + t*self.atoms[j].f[1]	#
-				self.atoms[j].xyz[2] = self.atoms[j].xyz[2] + t*self.atoms[j].f[2]	#
-			trial_energy = self.energy_update()						# get trial energy
-			backtrack_std = original_energy - 0.5*t*tot_norm_sq				# get acceptance condition parameter
+				self.atoms[j].xyz[0] = self.atoms[j].xyz[0] + t * self.atoms[j].f[0]
+				''' 
+					Here, you may need to move the 'y' and 'z' coordinates of the atom
+				'''
 
-			if trial_energy < backtrack_std:						# ls-sub solved; update configuration
-				return True								# escape
 
-			else:											# if rejected
-				for j in range(len(self.atoms)):						# move atoms back to the original config
-					self.atoms[j].xyz[0] = self.atoms[j].xyz[0] - t*self.atoms[j].f[0]	#
-					self.atoms[j].xyz[1] = self.atoms[j].xyz[1] - t*self.atoms[j].f[1]	#
-					self.atoms[j].xyz[2] = self.atoms[j].xyz[2] - t*self.atoms[j].f[2]	#
+			trial_energy = ''' After atoms are moved (done right above) you may need to calculated the energy of the current atom configuration '''
+
+			# if the internal parameter 't' (or alpha in the slides) is too big
+			if trial_energy > ''' ???? ''':
+
+				for j in range(len(self.atoms)):						
+				'''
+					Since the trial 't' is rejected, you may need to move the atoms back to the original positions
+				'''
 				t = beta*t									# reduce step-size
+			# if LS-subproblem solved; 
+			else:
+				return True
+
+
+
 
 		return False	# if max trial reached ... then return False
+
+
+	########################################################################################################################################################
+
 
 	'''
 		geometric optimisation main
@@ -456,7 +513,7 @@ if __name__ == '__main__':
 		opti_result = random_config_generator.pre_opti()
 		print("")
 		if opti_result == True:
-			print(" optimisation done, find detailed info in 'out.xyz'\n")
+			print(" optimisation done, find detailed info in 'racg_out.xyz'\n")
 			print("#"*100)
 			print(" RESULT_TAG: SUCCESS ")
 			print("#"*100)
